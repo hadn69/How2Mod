@@ -200,7 +200,15 @@ To do this, simply define a new ItemTest in your ModRegistry after the lists.
 
 You'll notice if you now run the game, you will see your item and it will have a missing texture.  That's because for it to have a texture, you need to implement IHasModel, and give it an item model JSON file.
 
+So back to the ItemTest class.
 
+Implement IHasModel, and then in registerModels(), call 
+
+	ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+	
+and now you need a JSON file, with your Item's registry name as its file name.  So off to the resources folder.
+
+So, while we're here, lets change the mcmod.info to reflect our mod.
 
 
 
