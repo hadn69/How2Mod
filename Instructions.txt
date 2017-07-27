@@ -291,7 +291,38 @@ You should really be following these commits.
 So sCMRL takes an item, but this is a block, so we need to use Item.getItemFromBlock to get this block's ItemBlock (the one we made in the constructor) to use it for the model location.
 See, Models are special as they only exist for Items, blocks in-world are handled by Blockstates, which are mapped automatically based on the block's registry name (you can change this, but its not required).
 
+So now we have that, let's define a new BlockTest.
 
+	public static final Block TEST_BLOCK = new BlockTest("test_block");
+	
+Now that just sits it there and it gets put on all the nice lists for registration and everything.
+Nice system as long as you remember to put the things on their lists.
+
+So, now the thing needs a texture. For that, you need a blockstate. Which is another json file, which uses the registry name of the block, and goes in the blockstates folder.
+
+This file is src\main\resources\assets\how2mod\blockstates\test_block.json
+
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all",
+		"textures": {
+			"all": "blocks/stone"
+		}
+	},
+	"variants": {
+		"normal": [{}],
+		"inventory": [{}]
+	}
+}
+
+The forge_marker says this is a forge blockstate.
+the defaults category is applied to all possible states of this block, in this case, only the normal state (variant) as it has no properties.
+the model and textures are how the block is actually rendered.  In this case, "cube_all" is the default 6-side 1-texture block, and it's texture param is "all". The texture name is based on the model you're using, so keep that in mind.
+The variants are where you define your blockstates, in this case, we only have the default (normal) and the inventory variant, which is the same as the normal.
+The reason the inventory variant is used is that some blocks might need a different inventory model, and that allows for it.
+But since we don't, we could use "normal" in the sCMRL of our BlockTest class instead of "inventory".
+Either way, now starting up the game will have you a nice test block, but we should get a lang entry.
 
 
 
