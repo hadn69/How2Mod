@@ -65,3 +65,44 @@ Okay so now delete the ExampleMod and it's package because those are useless and
 
 So, now you want to create your own mod class.  If you made it this far you should already understand java naming convention, so pick a class name and a package and just poof make ur class.
 Once you have that, update your group in your build.gradle to reflect this package name.
+
+So now lets get to the @Mod annotation.
+
+define 3 final strings in this class.  MODID, NAME, and VERSION.
+
+	public static final String MODID = "how2mod";
+	public static final String NAME = "How 2 Mod";
+	public static final String VERSION = "1.0.0";
+	
+like so.
+
+now create your @Mod annotation (this goes on the class).  In it, define modid, name, and version to be the three strings you just made. (Your version in here should probably reflect the one in your build.gradle)
+
+The import is `net.minecraftforge.fml.common.Mod` if you get confused.
+
+Your main mod class should now look similar to mine:
+https://github.com/Shadows-of-Fire/How2Mod/blob/860899525689181cf2b8ac2d3de3c17da3757b65/src/main/java/shadows/how2mod/How2Mod.java
+
+So now there are a few other things you need here.  First off, the @Instance annotation. For this, just define a blank public static variable of your mod class (public static How2Mod INSTANCE;) and throw @Instance above it.
+
+Next up are proxies.  For proxies, you need at least two files, and if you need server-side only stuff, you need three.
+There are a few ways to setup proxies, as your base proxy type can be a class or an interface, but here we'll use a class, since you won't have a special server proxy.
+So create a new class named CommonProxy in a proxy subpackage.
+Then, also make a ClientProxy class in the same package, that extends CommonProxy.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
