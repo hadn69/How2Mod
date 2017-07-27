@@ -388,8 +388,105 @@ To change the names, we'll need another method override.
 Simply using this in the Item class changes item.how2mod.test_meta_item.name into a set of item.how2mod.test_meta_item.X.name, where X is the current metadata.
 So, now go edit your lang file and textures, and you should end up with something like this: https://imgur.com/a/QGBAE
 Now that we have this, we can work on making the item do something.  And, making it do different things based on metadata.  So lets move on to functional Items.
+We are now at this commit: https://github.com/Shadows-of-Fire/How2Mod/commit/28c86d7fe9d735ae332acab68548d1437b4cbfa5
 
 We will start by making our ItemTest do something on right click, and another thing on right clicking a block.  There are two methods to handle this.
+
+To start off, the method that handles item right click is 
+
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+    {
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
+    }
+
+let's override that to send the player a chat message when a block is clicked.
+
+	@Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        if(world.isRemote)
+        	player.sendMessage(new TextComponentString("You have right clicked with a " + this.getRegistryName()));
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+    }
+	
+The important check here is if(world.isRemote).  isRemote is possibly one of the most important checks, as this decides if the current world is a logical client (a remote) or a logical server (non-remote). 
+Strictly logical client/server, as the physical client runs an integrated server, so both sides still exist.
+Without this check, the player would recieve two messages.  We only want to send this message to this client, so we run this on the client world.
+So go load up the game an test this. Your meta item will also be able to send the same message, but it will not know its current meta, so all variants do the same thing.
+You should end up with something like this: http://imgur.com/ukuqW2t
+
+Now let's make it do something different on a block.  Block clicks are handled by a different method, but if that method is not overriden, it falls back to onItemRightClick.  The method in question is
+
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
+        return EnumActionResult.PASS;
+    }
+
+So let's make that do something.
+
+	@Override
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if(world.isRemote)
+        	player.sendMessage(new TextComponentString("You have right clicked a " + world.getBlockState(pos).getBlock().getRegistryName() + " with a " + this.getRegistryName()));
+        return EnumActionResult.SUCCESS;
+    }
+	
+This will now send a message with the name of the block that you clicked, and the item you are holding.  Lets detail all the arguments here to understand.
+EntityPlayer player: this is whoever is using this item.  Currently, you.
+World world: This is the current world, remember, this is run twice, so it's run on a server world, and the client world. We only send our message on the client.
+BlockPos pos: The position (BlockPos is a wrapper for an (x, y, z) coordinate) of the block you clicked
+EnumHand hand: The hand you are holding the item with.
+EnumFacing facing: The face of the block you clicked on.
+float hitX: from 0 to 1, the x coordinate of where on the block you clicked. so the bottom left corner would be (0,0), and the top right is (1,1)
+float hitY: same concept, but a y coordinate.
+float hitZ: also same concept, but a z coordinate.
+
+So, to get the block we clicked on, we use world.getBlockState(pos), which returns an IBlockState at the current position.  An IBlockState is a block in the world, as block can have different properties, a IBlockState is created for each combination.
+IBlockStates can return their block through .getBlock(), and then we can get the name via getRegistryName().
+IBlockState will be covered later.
+
+Now, both the item and the meta item will now function as such: http://imgur.com/yLC4Dpj
+(but what if we want to handle item metadata?)'
+Well, now, let's override these functions in our meta item.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
