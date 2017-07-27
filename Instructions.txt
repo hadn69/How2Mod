@@ -208,7 +208,45 @@ Implement IHasModel, and then in registerModels(), call
 	
 and now you need a JSON file, with your Item's registry name as its file name.  So off to the resources folder.
 
-So, while we're here, lets change the mcmod.info to reflect our mod.
+So, while we're here, lets change the mcmod.info to reflect our mod.  mcmod.info is a JSON file, so don't break the formatting.  If you're bad at JSON formatting, use a validator, such as https://jsonlint.com/
+You should've changed it similarly to this: https://github.com/Shadows-of-Fire/How2Mod/commit/48d0c9c91775ed70eed5c975262ef9cc29886b52
+Now back to making the Item model JSON.  Create a new folder named assets, inside that, a folder with your modid as the name (in this case, how2mod).
+Then you need four other folders
+
+	blockstates
+	models
+	lang
+	textures
+	
+For now, ignore the blockstates folder.  In the lang folder, make an en_us.lang file (text document). A note about resources: case is important.  Any file with an uppercase letter will be ignored (completely just not loaded) during resource loading.
+So no caps.
+In the models folder, make a "block" and "item" folder.  The names are important.
+In the textures folder, make a "blocks" and "items" folder.  Yeah, nice consistency mojang.
+
+So now lets go to src\main\resources\assets\how2mod\models\item\ and make a new JSON file.  If you have no idea what a JSON is, it's basically a fancy-formatted text document with a bunch of rules.  
+Since our item is named "test", we need a file named "test.json"
+Now, you can use blockstates for items, but its obviously not always needed.  In this case, it wouldn't be worth it. Just copypaste this next part into your JSON.
+
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "items/sugar"
+  }
+}
+
+What this does is parent the model to the vanilla model item/generated (the default item model)
+and tells it to use the texture of sugar.  The name "layer0" for the texture is very important (basically all element names in json are extremely important, so don't misspell them, or you might rip your hair out wondering what's wrong).
+Item models can have layers of textures, so layer0 says "put this texture on the lowest layer.
+
+Also, you'll notice currently launching the mod doesn't register your item.  That's because you need to call super in all of your lifecycle events in your ClientProxy.
+And before you actually launch the game, let's set the lang entry for your item.
+in en_us.lang, define 
+	item.how2mod.test.name=Test Item
+The lang file works by taking key=name, where key is the lang key, and name is just about literally anything you can type there.  Lang entries are read per-line, so new entry, new line.
+
+So now your item is ready (nice work).  Run the game using `gradlew runClient` from the command line, or by calling the runClient gradle task from within your ide (There are also launch configurations to run the game other ways.)
+
+
 
 
 
