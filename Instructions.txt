@@ -141,8 +141,56 @@ Make a client package, and in it, create an interface named IHasModel.  This int
 	
 That's it, thats the entire interface.  @SideOnly makes it so the method will not exist on the physical server.  And now for this interface to do work, we need to put it in one other location.  The ClientProxy.
 
+So first off, call MinecraftForge.EVENT_BUS.register(this); in your client proxy's preinit method.
+
+Then, create an event handler for the ModelRegistryEvent inside the client proxy.
+
+	@SubscribeEvent
+	public void onModelRegister(ModelRegistryEvent e) {
+		
+	}
+	
+Now in here, we need to loop through all our blocks and items, and if they are an IHasModel, call IHasModel#registerModels from them.
+
+	for(Block b : ModRegistry.BLOCKS) if(b instanceof IHasModel) ((IHasModel) b).registerModels();
+	for(Item i: ModRegistry.ITEMS) if(i instanceof IHasModel) ((IHasModel) i).registerModels();
+	
+Like so.
 
 
+
+So now at this point you are finally ready to make a block/item.  Nice. Your workspace should resemble this repo at this commit: https://github.com/Shadows-of-Fire/How2Mod/tree/52c83bf11b620acf372bdcde06104857fd5c34df
+
+Let's start with items, since items are about 3x easier than a Block to implement in the first place.
+
+Make an items package, and create a class that extends Item.  Let's just call it ItemTest.
+
+add a constructor that just takes a String, this string will be the item's registry name.
+
+then in your constructor, you want to call 3 important methods.
+
+	setRegistryName(name);
+	setUnlocalizedName(How2Mod.MODID + "." + name);
+	ModRegistry.ITEMS.add(this);
+
+setRegistryName defines the namespace for your item, as all Items in minecraft now use this format, this step is required, or the game will crash.
+setUnlocalizedName sets the unlocalized name and prefixes it with your modid for your lang file, you want to do this to avoid possible conflicts in lang keys.
+The last call adds your item to your ITEMS list so it will be registered by the framework you set up earlier.
+
+If you want your item to display in creative tab, you need to call setCreativeTab. You can use any vanilla tab, or your own, but for now let's just use CreativeTabs.MISC.
+
+Your class should now look like this.
+
+public class ItemTest extends Item {
+	
+	public ItemTest(String name) {
+		setRegistryName(name);
+		setUnlocalizedName(How2Mod.MODID + "." + name);
+		setCreativeTab(CreativeTabs.MISC);
+		ModRegistry.ITEMS.add(this);
+	}
+
+}
 
 
 
