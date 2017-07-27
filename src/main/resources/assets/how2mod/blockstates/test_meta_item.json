@@ -1,0 +1,95 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "builtin/generated",
+		"transform": "forge:default-item"
+	},
+	"variants": {
+		"meta": {
+			"0": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"1": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"2": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"3": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"4": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"5": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"6": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"7": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"8": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"9": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"10": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"11": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"12": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"13": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"14": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			},
+			"15": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem0"
+				}
+			}
+
+
+
+
+		}
+	}
+}
