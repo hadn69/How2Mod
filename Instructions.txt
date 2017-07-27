@@ -62,3 +62,6 @@ It also has an @EventHandler for the init event, (you'll eventually have one for
 Timing is very important with forge, so, the events are in place for a reason.
 
 Okay so now delete the ExampleMod and it's package because those are useless and it doesn't matter.
+
+So, now you want to create your own mod class.  If you made it this far you should already understand java naming convention, so pick a class name and a package and just poof make ur class.
+Once you have that, update your group in your build.gradle to reflect this package name.

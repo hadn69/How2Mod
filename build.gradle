@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 
 version = "1.0.0" //Use this version scheme because quality
-group = "shadows.howmod" //This should be the package on your main mod class.
+group = "shadows.how2mod" //This should be the package on your main mod class.
 archivesBaseName = "how2mod" //The name gradle creates your .jar files with
 
 sourceCompatibility = targetCompatibility = '1.8'
