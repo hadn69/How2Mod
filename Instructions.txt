@@ -35,5 +35,16 @@ I use eclipse, but this is a preference thing, so it really doesn't matter.
 https://www.jetbrains.com/idea/download/ <- IntelliJ IDEA
 https://www.eclipse.org/downloads/ <- Eclipse (giant Download 64 Bit button)
 
+So now you have all those things you can actually start making a mod woo nice job
+Back to the forge folder and run the command "gradlew sDecW eclipse" (for eclipse) or "gradlew sDecW idea" (for IDEA).
+sDecW means setupDecompWorkspace (it's literally just the shorter command version, either works) and the second command makes certain IDE files.
+sDecW will take a while, so just sit there and let it do stuff.  If it fails, it probably means your JDK is improperly configured.  The whole process is that this command downloads forge, the mappings, and minecraft.  It then decompiles minecraft, deobfuscates it (remaps most of the method and field names into readable ones), and then recompiles it so it can run in a dev environment, and creates a linked source jar for you to work with.  It's basically all magic.
 
+Now here's the part where its important that I use eclipse, because if you're using IDEA, you'll have to figure out the idea equivalent of certain things I do.  *anyway* lets begin.
 
+Now that your sDecW is finished (you should see a BUILD SUCCESSFUL) in the command window, you need to import the project into your IDE.  I think i'm gonna start using newlines here to split Eclipse and IDEA, in case anyone wants to write in here how that works.
+
+ECLIPSE:  Use the import function and import an Existing Gradle Project.  Then just direct it to the folder containing your build.gradle and hit finish. Then you should end up with this: https://imgur.com/KLCwWmu
+
+So now we basically just have the example mod in here. (com.example.examplemod.ExampleMod)
+Which you can work with easily, but you should probably just completely ignore and make your own thing.
