@@ -133,6 +133,14 @@ MinecraftForge.EVENT_BUS.register(new ModRegistry());
 in preinit, somewhere that will be called on both sides (So far, the only thing separated is your ClientProxy, which will only run code on the client).
 
 
+Now i may seem like a crazy person and this may all seem pointless *but* there's just one more thing you should do.
+Make a client package, and in it, create an interface named IHasModel.  This interface will only have one method (Yes, you can make it a default method, but i'll do that later, as the default impl is a bit complex.)
+
+	@SideOnly(Side.CLIENT)
+	public void registerModels();
+	
+That's it, thats the entire interface.  @SideOnly makes it so the method will not exist on the physical server.  And now for this interface to do work, we need to put it in one other location.  The ClientProxy.
+
 
 
 
