@@ -258,7 +258,44 @@ So lets go make a bad looking 16x png to test this theory.
 
 https://imgur.com/a/pvNea
 
-See, bam, custom texture.
+See, bam, custom texture. See: https://github.com/Shadows-of-Fire/How2Mod/commit/4a0d6746954108cc2084182459e996239bd5b094
+
+So now onto making a Block.  Make a new package called blocks and create a class extending Block (net.minecraft.block.Block) named BlockTest.
+You'll notice automatically Block is not as simple as Item, as it has a required super constructor, taking a Material.  For now, just pass it Material.ROCK and ignore it.
+The Material controls various things about the Block, and changing it will make it behave like you'd expect the material to.
+Lets just add a constructor with a String for the name for now. We a;so want to implement IHasModel with a similar override to our item, but not exactly the same.
+
+So this is now our block constructor.
+
+	public BlockTest(String name) {
+		super(Material.ROCK);
+		setRegistryName(name);
+		setUnlocalizedName(How2Mod.MODID + "." + name);
+		setCreativeTab(CreativeTabs.MISC);
+		ModRegistry.BLOCKS.add(this);
+		ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
+	}
+	
+the super sets the material.  The next four methods are the same from ItemTest. The last bit is creating an ItemBlock and adding that ItemBlock to the item list for registration.
+The ItemBlock is needed for your Block to exist as an Item.  Blocks are strictly placed in the world.  Without an ItemBlock, it cannot be dropped, or held, or anything of the sort.
+
+So now our constructor is explained, and lets implement IHasModel.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
