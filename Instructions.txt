@@ -46,5 +46,19 @@ Now that your sDecW is finished (you should see a BUILD SUCCESSFUL) in the comma
 
 ECLIPSE:  Use the import function and import an Existing Gradle Project.  Then just direct it to the folder containing your build.gradle and hit finish. Then you should end up with this: https://imgur.com/KLCwWmu
 
+IDEA: ?
+
 So now we basically just have the example mod in here. (com.example.examplemod.ExampleMod)
 Which you can work with easily, but you should probably just completely ignore and make your own thing.
+
+Before you delete the example mod, it might be useful to look at what is in it.  It's very basic, but it still has the important conceps that define a mod.
+
+First off, the @Mod annotation, which marks your class as a main mod class for forge to load.
+Now, there are 3 main variables you want to set in @Mod, being modid, version, and name.
+the ExampleMod doesn't set name, so it defaults being your modid.
+You'll also want to define all three of these as variables somewhere else, since you will need them in other places. (just as the example mod does).
+
+It also has an @EventHandler for the init event, (you'll eventually have one for preInit, init, and postInit to do stuff).
+Timing is very important with forge, so, the events are in place for a reason.
+
+Okay so now delete the ExampleMod and it's package because those are useless and it doesn't matter.
