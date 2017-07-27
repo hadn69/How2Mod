@@ -7,11 +7,22 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import shadows.how2mod.items.ItemTest;
 
 public class ModRegistry {
 	
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 	public static final List<Item> ITEMS = new ArrayList<Item>();
+	
+	public static final Item TEST = new ItemTest("test");
+
+	
+	
+	
+	
+	
+	
+	
 	
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {

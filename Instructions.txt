@@ -192,8 +192,13 @@ public class ItemTest extends Item {
 
 }
 
+So now you want an item in the game, well you have your item class, and now you can make the most basic of item (that is, an item that exists, and does literally nothing).
 
+To do this, simply define a new ItemTest in your ModRegistry after the lists.
 
+	public static final Item TEST = new ItemTest("test");
+
+You'll notice if you now run the game, you will see your item and it will have a missing texture.  That's because for it to have a texture, you need to implement IHasModel, and give it an item model JSON file.
 
 
 
