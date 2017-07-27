@@ -245,9 +245,20 @@ in en_us.lang, define
 The lang file works by taking key=name, where key is the lang key, and name is just about literally anything you can type there.  Lang entries are read per-line, so new entry, new line.
 
 So now your item is ready (nice work).  Run the game using `gradlew runClient` from the command line, or by calling the runClient gradle task from within your ide (There are also launch configurations to run the game other ways.)
+And your end result should basically be this: https://imgur.com/a/pjECs
+Your repo should now resemble this repo at this point in time: https://github.com/Shadows-of-Fire/How2Mod/tree/7119010acf42c5f8dcca693d1561c71fe914f951
 
+So, now you can make any basic item that doesn't do anything by creating a new ItemTest and giving it a model JSON and a lang entry.  If you want to use your own custom texture for your item, instead of "items/sugar", just define the path to your texture.
 
+Item textures should go in textures/items, and to reference them you need to specify the domain.
+The domain is your modid, vanilla textures do not requires a domain, as "minecraft" is the fallback domain.  You specify a domain as such.  Say you had a file "test.png" in textures/items.
+	how2mod:items/test
+that would be the string you provide to layer0 to use that texture.
+So lets go make a bad looking 16x png to test this theory.
 
+https://imgur.com/a/pvNea
+
+See, bam, custom texture.
 
 
 
