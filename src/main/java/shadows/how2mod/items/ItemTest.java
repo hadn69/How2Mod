@@ -17,8 +17,8 @@ import shadows.how2mod.How2Mod;
 import shadows.how2mod.client.IHasModel;
 import shadows.how2mod.init.ModRegistry;
 
-public class ItemTest extends Item implements IHasModel{
-	
+public class ItemTest extends Item implements IHasModel {
+
 	public ItemTest(String name) {
 		setRegistryName(name);
 		setUnlocalizedName(How2Mod.MODID + "." + name);
@@ -30,19 +30,19 @@ public class ItemTest extends Item implements IHasModel{
 	public void registerModels() {
 		ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
 	}
-	
+
 	@Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        if(world.isRemote)
-        	player.sendMessage(new TextComponentString("You have right clicked with a " + this.getRegistryName()));
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
-    }
-	
-		@Override
-	    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-	        if(world.isRemote)
-	        	player.sendMessage(new TextComponentString("You have right clicked a " + world.getBlockState(pos).getBlock().getRegistryName() + " with a " + this.getRegistryName()));
-	        return EnumActionResult.SUCCESS;
-	    }
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		if (world.isRemote)
+			player.sendMessage(new TextComponentString("You have right clicked with a " + this.getRegistryName()));
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+	}
+
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (world.isRemote)
+			player.sendMessage(new TextComponentString("You have right clicked a " + world.getBlockState(pos).getBlock().getRegistryName() + " with a " + this.getRegistryName()));
+		return EnumActionResult.SUCCESS;
+	}
 
 }

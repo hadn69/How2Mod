@@ -12,7 +12,7 @@ import shadows.how2mod.client.IHasModel;
 import shadows.how2mod.init.ModRegistry;
 
 public class ClientProxy extends CommonProxy {
-	
+
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
@@ -30,11 +30,15 @@ public class ClientProxy extends CommonProxy {
 		super.postInit(e);
 
 	}
-	
+
 	@SubscribeEvent
 	public void onModelRegister(ModelRegistryEvent e) {
-		for(Block b : ModRegistry.BLOCKS) if(b instanceof IHasModel) ((IHasModel) b).registerModels();
-		for(Item i: ModRegistry.ITEMS) if(i instanceof IHasModel) ((IHasModel) i).registerModels();
+		for (Block b : ModRegistry.BLOCKS)
+			if (b instanceof IHasModel)
+				((IHasModel) b).registerModels();
+		for (Item i : ModRegistry.ITEMS)
+			if (i instanceof IHasModel)
+				((IHasModel) i).registerModels();
 	}
-	
+
 }
