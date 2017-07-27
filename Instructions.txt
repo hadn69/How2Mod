@@ -1,0 +1,28 @@
+How 2 minecraft mod the text document:
+
+First go get urself a nice forge mdk from http://files.minecraftforge.net/
+then extract it into a folder somewhere
+
+Then delete everything deleted in this commit right here:
+https://github.com/Shadows-of-Fire/How2Mod/commit/d55fbaa0f6d84c91f5114053fa302e4da9bcb0f7
+
+Now you need to go actually get the gradle wrapper again, since you just deleted 2.14 (the very old version forge ships)
+https://gradle.org/releases/ Go get yourself the binary-only edition of the latest gradle.
+Since this is the actual version of gradle, you'll need to do a few things to use it.
+
+You have two options here: Either install gradle to your system, or temporarily extract and generate the wrapper files.
+
+Since the second option is less compilated, let's go with that.
+
+So extract the gradle zip into some folder, then run the command "gradle w" from a command prompt or command line.
+then run "gradle --stop" to close the daemon so you can delete this folder later.
+Now you have generated 4 files you need to go put the wrapper back in your forge workspace.
+
+gradlew
+gradlew.bat
+gradle (folder)
+
+Move those three things into the dir with your mdk and then we can get back to that. (you can then delete the old gradle folder). See commit: https://github.com/Shadows-of-Fire/How2Mod/commit/e4ba4e1b92751816d7267780b8f84b759cc2757b
+
+Then if you want a bit of understanding about the build.gradle, I've changed the default comments on them because they are useless. https://github.com/Shadows-of-Fire/How2Mod/blob/8b52990a88a6318e68a43d540754ff70ce5218a9/build.gradle
+
