@@ -386,7 +386,10 @@ To change the names, we'll need another method override.
 	}
 	
 Simply using this in the Item class changes item.how2mod.test_meta_item.name into a set of item.how2mod.test_meta_item.X.name, where X is the current metadata.
-So, now go edit your lang file and textures, and you should end up with something like this: 
+So, now go edit your lang file and textures, and you should end up with something like this: https://imgur.com/a/QGBAE
+Now that we have this, we can work on making the item do something.  And, making it do different things based on metadata.  So lets move on to functional Items.
+
+We will start by making our ItemTest do something on right click, and another thing on right clicking a block.  There are two methods to handle this.
 
 
 

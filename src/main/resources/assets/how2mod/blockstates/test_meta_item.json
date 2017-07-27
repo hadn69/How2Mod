@@ -13,77 +13,77 @@
 			},
 			"1": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem1"
 				}
 			},
 			"2": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem2"
 				}
 			},
 			"3": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem3"
 				}
 			},
 			"4": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem4"
 				}
 			},
 			"5": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem5"
 				}
 			},
 			"6": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem6"
 				}
 			},
 			"7": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem7"
 				}
 			},
 			"8": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem8"
 				}
 			},
 			"9": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem9"
 				}
 			},
 			"10": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem10"
 				}
 			},
 			"11": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem11"
 				}
 			},
 			"12": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem12"
 				}
 			},
 			"13": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem13"
 				}
 			},
 			"14": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem14"
 				}
 			},
 			"15": {
 				"textures": {
-					"layer0": "how2mod:items/metaitem0"
+					"layer0": "how2mod:items/metaitem15"
 				}
 			}
 
