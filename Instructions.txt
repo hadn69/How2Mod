@@ -89,7 +89,48 @@ Next up are proxies.  For proxies, you need at least two files, and if you need 
 There are a few ways to setup proxies, as your base proxy type can be a class or an interface, but here we'll use a class, since you won't have a special server proxy.
 So create a new class named CommonProxy in a proxy subpackage.
 Then, also make a ClientProxy class in the same package, that extends CommonProxy.
+then, similarly to your @Instance, you need a blank CommonProxy field in your main mod class.
+This field then needs to be annotated with @SidedProxy, and the two arguments need to be set as such.
+clientSide = fully qualified name of your ClientProxy
+serverSide = fully qualified name of your CommonProxy
+See:
+https://github.com/Shadows-of-Fire/How2Mod/commit/b4364ddd9f4aa846e3fa701b329d4e1f590ffb5f
 
+Now we need some event handlers so we can actually do things with our new mod.
+
+So now you need to create three @EventHandler methods.
+(This is a special annotation used for FML lifecycle events, normal Forge events use @SubscribeEvent).
+
+One for preInit(FMLPreInitializationEvent), one for init(FMLInitializationEvent), and one for postInit(FMLPostInitializationEvent).
+
+These methods need to be non-static, and you need them in your main mod class.  You will also want similar methods in your proxies, but they do not need the annotation.
+See:
+https://github.com/Shadows-of-Fire/How2Mod/commit/b0c084dfc30863f6bffb43644e83865a0cee37a8
+
+So now you're just about ready to make a block or an item or whatever.  But since automagic things are much better than writing out the same methods 100 times, lets setup a bit of a framework for doing things.
+So make a new init package, and in there make a new class called ModRegistry.  Here is where we will define, register, and process new things that need to be registered with the game.  So lets start by making a new List<Block> and a new List<Item> (net.minecraft.item.Item and net.minecraft.block.Block)
+
+	public static final List<Block> BLOCKS = new ArrayList<Block>();
+	public static final List<Item> ITEMS = new ArrayList<Item>();
+	
+Now we also need two event handlers (simply put, a method with an Event as a param with @SubscribeEvent on it).
+One for the Register<Block> event and one for the Register<Item> event.
+In these, you want to call event.getRegistry().registerAll(List#toArray(new E[0])); for your respective lists.
+
+	@SubscribeEvent
+	public void onBlockRegister(Register<Block> event) {
+		event.getRegistry().registerAll(BLOCKS.toArray(new Block[0]));
+	}
+	
+	@SubscribeEvent
+	public void onItemRegister(Register<Item> event) {
+		event.getRegistry().registerAll(ITEMS.toArray(new Item[0]));
+	}
+
+Then, we need to go tell forge that this class exists and it has event handlers for forge to call.  let's do that in the CommonProxy (or the main mod class, doesn't matter, just so as long as you call it during preInit).
+So, all you want to do here is call this method
+MinecraftForge.EVENT_BUS.register(new ModRegistry());
+in preinit, somewhere that will be called on both sides (So far, the only thing separated is your ClientProxy, which will only run code on the client).
 
 
 
