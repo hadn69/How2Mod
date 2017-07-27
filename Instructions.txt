@@ -480,9 +480,22 @@ Then you can base things off the stacksize (stack.getCount()) or the metadata (s
 So now we're at this commit: https://github.com/Shadows-of-Fire/How2Mod/commit/50bb9d5cd670e883bccdba140dec05ddedd98469
 and I'll come back to write about blockstates in the morning or something.  Cuz its 5 am, and I still don't know why I'm doing this in the first place -.<
 
+It is now 7 pm and i apparently have motivation to do anything again. I'm real gud.
+so now there are a few important conceps about blockstates.
+Every Block exists in the world as an IBlockState, (both of these are singletons, but a single Block can have multiple IBlockStates)
+All possible IBlockStates are created during the super call to block, based on the IProperties assigned to the block state container in createBlockState()
+So, real definitions.
+Block: The block, the single instance of the block.  There is only ever one of these per registry name, and it exists strictly in-world (but even then, not really).
+IBlockState: A manifestation of a block in the world, based on what properties are assigned to the block.
+IProperty: A value that can be part of an IBlockState, and can be obtained from an IBlockState as long as that property exists.  Trying to get a property a state doesn't have will crash.
 
-
-
+So, for items, there is only metadata.  Blockstates have to be serialized to meta to be saved, and converted back.  This is handled per-block, by you.
+There are two methods that need to be overriden, or no states will persist through saving the game.
+	
+	public IBlockState getStateFromMeta(int meta)
+	public int getMetaFromState(IBlockState state)
+	
+	
 
 
 
