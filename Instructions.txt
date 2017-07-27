@@ -448,6 +448,34 @@ Now, both the item and the meta item will now function as such: http://imgur.com
 (but what if we want to handle item metadata?)'
 Well, now, let's override these functions in our meta item.
 
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (world.isRemote)
+			player.sendMessage(new TextComponentString("You have right clicked with a " + I18n.format(getUnlocalizedName(stack) + ".name")));
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+	}
+
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (world.isRemote)
+			player.sendMessage(new TextComponentString("You have right clicked a " + world.getBlockState(pos).getBlock().getRegistryName() + " with a " + I18n.format(getUnlocalizedName(stack) + ".name")));
+		return EnumActionResult.SUCCESS;
+	}
+	
+Using these two functions, we get the current ItemStack (as Item is a singleton, so there is only ever one Item, but there are many ItemStack's.  This is how metadata works.  Similar concept for Blocks and IBlockState's)
+through player.getHeldItem(hand), as we are passed the hand and the player, we can get this ItemStack (which should have our item, unless someone is setting something on fire).
+now, before, we were just using the item's registry name.  And, while we could continue to do that, and also use the stack metadata, lets just use the stack name.
+I18n.format is a client-only method that attempts to translate a given lang key.  If it fails, it returns the lang key.  Now, there are two I18n's, one is deprecated.  Don't touch it.
+The non-deprecated one is the one from net.minecraft.client.resources, and it is a client-only class.  Meaning, attempting to use it on a dedicated server will crash the server.
+However, since our call is inside a if(world.isRemote), we only run on the client world, where I18n exists.
+
+Now we end up with something like this: https://imgur.com/a/M13sk
+
+So, essentially, to do things on item clicks, those are the methods to use.
+To base things on the ItemStack instead of the Item directly, you have to get the stack using player.getHeldItem(hand).
+Then you can base things off the stacksize (stack.getCount()) or the metadata (stack.getMetadata())
 
 
 
