@@ -1,4 +1,4 @@
-How 2 minecraft mod the text document:
+How 2 minecraft mod the text document: //todo: make in markdown cuz fancy formats
 
 First go get urself a nice forge mdk from http://files.minecraftforge.net/
 then extract it into a folder somewhere
