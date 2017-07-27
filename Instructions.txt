@@ -324,6 +324,12 @@ The reason the inventory variant is used is that some blocks might need a differ
 But since we don't, we could use "normal" in the sCMRL of our BlockTest class instead of "inventory".
 Either way, now starting up the game will have you a nice test block, but we should get a lang entry.
 
+https://imgur.com/a/H2NEs
+
+So now we have this.
+Similarly to texturing our item, to use a custom block texture, you simply set it in the "textures" part of the blockstate.
+In this case, we change "all" to "how2mod:blocks/test" instead of "blocks/stone".
+
 
 
 
