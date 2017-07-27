@@ -280,8 +280,16 @@ the super sets the material.  The next four methods are the same from ItemTest. 
 The ItemBlock is needed for your Block to exist as an Item.  Blocks are strictly placed in the world.  Without an ItemBlock, it cannot be dropped, or held, or anything of the sort.
 
 So now our constructor is explained, and lets implement IHasModel.
+Oh yeah, and we're here right now: https://github.com/Shadows-of-Fire/How2Mod/commit/bfca6079737f91a7320adb5509024b143e2fd780
+You should really be following these commits.
 
-
+	@Override
+	public void registerModels() {
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+	}
+	
+So sCMRL takes an item, but this is a block, so we need to use Item.getItemFromBlock to get this block's ItemBlock (the one we made in the constructor) to use it for the model location.
+See, Models are special as they only exist for Items, blocks in-world are handled by Blockstates, which are mapped automatically based on the block's registry name (you can change this, but its not required).
 
 
 
