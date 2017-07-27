@@ -367,7 +367,26 @@ So doing this makes the item look in a blockstate with the item's registry name 
 Now you may be thinking blockstates are just for blocks, but that's already not true, as your BlockTest uses a blockstate for it's item model.
 So, let's go make a normal item blockstate.
 
+This is now our item blockstate.
+https://github.com/Shadows-of-Fire/How2Mod/blob/458ab28c8e21dfb4333bd6e65e42a2f60f7feba6/src/main/resources/assets/how2mod/blockstates/test_meta_item.json
 
+Notice we are using builtin/generated and the transform forge:default-item instead of item/generated, that is because in a blockstate, you cannot use models that are in the item folder.  Only builtin/generated or block models.
+So, right now, all these items use the same texture.  They can use textures from the items folder, the limit is strictly on model.
+So lets go make another trash texture, define a new ItemMetaTest, and launch the game.  You may also want to get yourself a lang entry.  Right now, all 16 variants use the same name.
+
+You should end up with something like this: https://imgur.com/a/1M6lA
+
+Now, lets go and replace all of these so they have different textures and different names.
+To change the textures, simply edit the "textures" section of the blockstate per variant.
+To change the names, we'll need another method override.
+
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		return super.getUnlocalizedName() + "." + stack.getMetadata();
+	}
+	
+Simply using this in the Item class changes item.how2mod.test_meta_item.name into a set of item.how2mod.test_meta_item.X.name, where X is the current metadata.
+So, now go edit your lang file and textures, and you should end up with something like this: 
 
 
 

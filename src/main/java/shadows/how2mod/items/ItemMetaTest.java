@@ -27,5 +27,10 @@ public class ItemMetaTest extends ItemTest{
 	public void registerModels() {
 		for(int i = 0; i < 16; i++) ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName(), "meta=" + i));
 	}
+	
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		return super.getUnlocalizedName() + "." + stack.getMetadata();
+	}
 
 }
