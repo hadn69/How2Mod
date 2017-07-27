@@ -477,7 +477,8 @@ So, essentially, to do things on item clicks, those are the methods to use.
 To base things on the ItemStack instead of the Item directly, you have to get the stack using player.getHeldItem(hand).
 Then you can base things off the stacksize (stack.getCount()) or the metadata (stack.getMetadata())
 
-
+So now we're at this commit: https://github.com/Shadows-of-Fire/How2Mod/commit/50bb9d5cd670e883bccdba140dec05ddedd98469
+and I'll come back to write about blockstates in the morning or something.  Cuz its 5 am, and I still don't know why I'm doing this in the first place -.<
 
 
 
