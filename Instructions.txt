@@ -26,3 +26,14 @@ Move those three things into the dir with your mdk and then we can get back to t
 
 Then if you want a bit of understanding about the build.gradle, I've changed the default comments on them because they are useless. https://github.com/Shadows-of-Fire/How2Mod/blob/8b52990a88a6318e68a43d540754ff70ce5218a9/build.gradle
 
+Now, there are a few things you need for this (one of them is a JDK, the other is an IDE).
+If you dont have a JDK, you need to install it and properly configure it.
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+(I won't be going over that)
+If you don't have an IDE, you need to go get one.  The only "supported" ones are IntelliJ IDEA and Eclipse.
+I use eclipse, but this is a preference thing, so it really doesn't matter.
+https://www.jetbrains.com/idea/download/ <- IntelliJ IDEA
+https://www.eclipse.org/downloads/ <- Eclipse (giant Download 64 Bit button)
+
+
+
