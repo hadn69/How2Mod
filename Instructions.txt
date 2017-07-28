@@ -499,9 +499,45 @@ There are two methods that need to be overriden, or no states will persist throu
 	
 And with that in mind, let's go make a new block class.  We will be extending our old block to do this.
 
+public class BlockWithStates extends BlockTest{
 
+	public BlockWithStates(String name) {
+		super(name);
+	}
 
+}
 
+Literally this is all we end up with.  So lets begin by applying states.  For the most basic property, we will be creating a PropertyInteger.
+To do this, define a public static final PropertyInteger ranging from 0 to 7.
+
+	public static final PropertyInteger META = PropertyInteger.create("meta", 0, 7);
+
+So, now we want to override three methods, based on how our property works.
+
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(META);
+	}
+	
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return this.getDefaultState().withProperty(META, meta);
+	}
+	
+	@Override
+	public BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, META);
+	}
+	
+The first controls how our IBlockStates will be saved to disk.  This integer must be from 0 to 15, inclusive, and cannot be anything else.
+The second controls how the world knows how to deserialize our IBlockState from its meta.
+These both have to be handled manually, and depending on how many properties you have, it can get a little complex.  Right now, we just have a property integer, and only one property, so it's similar to how item meta works.
+The last method tells minecraft about the property we want our block to have, in this case, the META property we just created.
+Now, there are a few other things that need to happen to use states here.  So, let's add another line to our constructor.
+
+	setDefaultState(this.blockState.getBaseState().withProperty(META, 0));
+	
+This tells minecraft what to return in getDefaultState(), which is generally what we is used to get the default IBlockState of any block.  It's also generally used as a fallback should something fail.
 
 
 
