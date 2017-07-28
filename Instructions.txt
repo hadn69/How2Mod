@@ -683,9 +683,9 @@ You may notice the itemGroup.how2mod, that's a lang key.  This tab currently has
 	
 	itemGroup.how2mod=How 2 Mod Test Things
 	
-So now our tab is named, our items are there, and we are at this commit: 
+So now our tab is named, our items are there, and we are at this commit: https://github.com/Shadows-of-Fire/How2Mod/commit/28e41c5d3a75b41a2124b2df1e3d415bda9a05b0
 
-
+And on that note, its 3 am, so no more anything tonight.  Poor u.  U can learn later.
 
 
 
