@@ -346,7 +346,14 @@ in the constructor.  This tells our item that is has subtypes (metadata) and it 
 		return damage;
 	}
 
-Now, defaultly, this returns 0, so a normal item has no metadata.
+Now, defaultly, this returns 0, so a normal item has no metadata. 
+
+Side note, added later: If you want to clamp this, you can change it to something like 
+
+	return damage > max ? damage : max;
+	
+Otherwise your item can have a max metadata of up to 32768
+	
 In essence, for items to function, there are a bunch of methods you need to override and then tell said item to do things in them.  There are a lot of them, and perhaps later i will create a base class with most of these methods and a set of comments showing what it is they do.
 For now, you have an item with metadata.  You don't have to do anything else, but unless you override a few other functions, they will all have the same name, and only meta 0 will have a texture.
 So first off, let's override getSubItems.  This allows our item to place as many ItemStack's on its own creative tab as it wants.
