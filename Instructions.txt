@@ -663,7 +663,27 @@ Note, we will not be expanding getSubItems, as this will be strictly for display
 Sometimes it makes sense to make a new item to display on the creative tab, (BiomesOPlenty does this with their Earth item), but right now we can use subtypes.  This new item should be unobtainable, so it doesn't *really* need a lang entry.
 You can add one if you want.
 
+So, now, verifying you did everything like this commit: https://github.com/Shadows-of-Fire/How2Mod/commit/1b048dd65316b61da021a2f607dce39eb7904ad8
+We can make our creative tab.  We will be using an anonymous implementation of the abstract CreativeTabs class.
 
+	public static final CreativeTabs TAB = new CreativeTabs(How2Mod.MODID) {
+
+		@Override
+		public ItemStack getTabIconItem() {
+			return new ItemStack(META_TEST, 1, 16);
+		}
+		
+	};
+	
+Define this in your ModRegistry under the Lists, but before you declare any blocks or items.
+And bam, that's a creative tab.  Now, lets go put all our things on this tab instead of Misc.
+To change that, just change setCreativeTab to point to this new tab.
+So, unless you did this https://github.com/Shadows-of-Fire/How2Mod/commit/a602f8272a2be2dce7ca9df788606ed5d70bdccc on accident, you now end up with this: http://imgur.com/4iDnnyA
+You may notice the itemGroup.how2mod, that's a lang key.  This tab currently has no lang key, so lets go fix that.
+	
+	itemGroup.how2mod=How 2 Mod Test Things
+	
+So now our tab is named, our items are there, and we are at this commit: 
 
 
 

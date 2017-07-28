@@ -1,7 +1,6 @@
 package shadows.how2mod.items;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,7 +21,7 @@ public class ItemTest extends Item implements IHasModel {
 	public ItemTest(String name) {
 		setRegistryName(name);
 		setUnlocalizedName(How2Mod.MODID + "." + name);
-		setCreativeTab(CreativeTabs.MISC);
+		setCreativeTab(ModRegistry.TAB);
 		ModRegistry.ITEMS.add(this);
 	}
 

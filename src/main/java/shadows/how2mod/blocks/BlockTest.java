@@ -3,7 +3,6 @@ package shadows.how2mod.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
@@ -17,7 +16,7 @@ public class BlockTest extends Block implements IHasModel {
 		super(Material.ROCK);
 		setRegistryName(name);
 		setUnlocalizedName(How2Mod.MODID + "." + name);
-		setCreativeTab(CreativeTabs.MISC);
+		setCreativeTab(ModRegistry.TAB);
 		ModRegistry.BLOCKS.add(this);
 		if(!hasCustomItemBlock) ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
 	}

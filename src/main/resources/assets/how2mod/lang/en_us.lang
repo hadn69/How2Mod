@@ -27,3 +27,5 @@ tile.how2mod.test_state_block.4.name=Test State Block 4
 tile.how2mod.test_state_block.5.name=Test State Block 5
 tile.how2mod.test_state_block.6.name=Test State Block 6
 tile.how2mod.test_state_block.7.name=Test State Block 7
+
+itemGroup.how2mod=How 2 Mod Test Things
