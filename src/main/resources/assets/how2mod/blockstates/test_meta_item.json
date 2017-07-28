@@ -85,11 +85,12 @@
 				"textures": {
 					"layer0": "how2mod:items/metaitem15"
 				}
+			},
+			"16": {
+				"textures": {
+					"layer0": "how2mod:items/metaitem16"
+				}
 			}
-
-
-
-
 		}
 	}
 }
