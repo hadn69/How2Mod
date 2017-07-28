@@ -1,0 +1,50 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all"
+	},
+	"variants": {
+		"meta": {
+			"0": {
+				"textures": {
+					"all": "how2mod:blocks/testblock0"
+				}
+			},
+			"1": {
+				"textures": {
+					"all": "how2mod:blocks/testblock1"
+				}
+			},
+			"2": {
+				"textures": {
+					"all": "how2mod:blocks/testblock2"
+				}
+			},
+			"3": {
+				"textures": {
+					"all": "how2mod:blocks/testblock3"
+				}
+			},
+			"4": {
+				"textures": {
+					"all": "how2mod:blocks/testblock4"
+				}
+			},
+			"5": {
+				"textures": {
+					"all": "how2mod:blocks/testblock5"
+				}
+			},
+			"6": {
+				"textures": {
+					"all": "how2mod:blocks/testblock6"
+				}
+			},
+			"7": {
+				"textures": {
+					"all": "how2mod:blocks/testblock7"
+				}
+			}
+		}
+	}
+}

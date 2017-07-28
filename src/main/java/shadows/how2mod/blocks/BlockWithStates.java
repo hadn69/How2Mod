@@ -3,9 +3,12 @@ package shadows.how2mod.blocks;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.client.model.ModelLoader;
 import shadows.how2mod.init.ModRegistry;
 import shadows.how2mod.items.ItemBlockTest;
 
@@ -37,6 +40,11 @@ public class BlockWithStates extends BlockTest{
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
 		for(int i = 0; i < 8; i++) list.add(new ItemStack(this, 1, i));
+	}
+	
+	@Override
+	public void registerModels() {
+		for(int i = 0; i < 8; i++) ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), i, new ModelResourceLocation(getRegistryName(), "meta=" + i));
 	}
 
 }

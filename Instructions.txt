@@ -601,6 +601,14 @@ Just like that.  Note we do not have to check if(isInCreativeTab(this)) since th
 
 Now we need our blockstate, and to override registerModels().  Since it'll be easier to do the override, lets do that first.
 
+	@Override
+	public void registerModels() {
+		for(int i = 0; i < 8; i++) ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), i, new ModelResourceLocation(getRegistryName(), "meta=" + i));
+	}
+
+This will register our itemblock's for meta 0-7 to the same blockstate variant, so the inventory and the block in-world will be the same.
+Now we just need the blockstate JSON.  We can essentially use our item blockstate as a base, since using only a single property integer makes them nearly equivalent.
+
 
 
 
