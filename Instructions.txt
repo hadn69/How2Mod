@@ -612,14 +612,50 @@ So now we get this: https://github.com/Shadows-of-Fire/How2Mod/blob/7056f658c3ab
 Honestly, the only thing that matters is the cube_all, and the fact that the textures are named "all" as their selector.  The file name and texture paths can be different.  Hell, if you're feeling confident, you could even make a custom model using an editor.
 There are also other vanilla models that things can be based off of.
 This blockstate file applies the "cube_all" model to all states, but then applies a different texture based on the state.  Now, I'll go create some placeholder textures, so they actually appear.
-You can either do that as well, or just steal them from the repo.
+You can either do that as well, or just steal them from the repo: https://github.com/Shadows-of-Fire/How2Mod/tree/master/src/main/resources/assets/how2mod/textures/blocks (testblock0-7)
 
+So, now, plug in some lang entries (you honestly don't have to for testing), define your block, and then there you have it.
+EXCEPT!
+There is *one* more bit of the puzzle you need for your itemblocks to actually place a different block based on the itemstack, and that is getStateForPlacement.
 
+	@Override
+    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+        return getDefaultState().withProperty(META, meta);
+    }
+	
+We want this in our block class.  This tells our itemblock to place a different IBlockState based on the meta of the ItemStack being used.
 
+You will also notice that currently, all of your itemblocks share the same name.  To solve this, simply use the same getUnlocalizedName override that was used in ItemMetaTest:
 
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		return super.getUnlocalizedName() + "." + stack.getMetadata();
+	}
+	
+Then you can go enter in your lang entries, and well, do stuff.
 
+After defining your block, you should end up with something like this: http://imgur.com/sR2CPkJ
+However, there are *even more* issues apparent with making it work correctly.  As it stands, all of thse blocks will only drop the 0 block.
+Now, there are a lot of methods that control how drops are processed, but since we only need to change the metadata of the dropped item, we can just change
 
+    public int damageDropped(IBlockState state)
+    {
+        return 0;
+    }
+	
+to reflect our blockstate
 
+	@Override
+    public int damageDropped(IBlockState state) {
+        return state.getValue(META);
+    }
+
+Now you should be able to break your block with a pickace and simply collect the correct item, as such: http://imgur.com/4iE2GOp
+So, issue is now, the misc tab is becoming pretty cluttered with our stuff: http://imgur.com/yxKvcwx So, we probably want our own.  Then, we can go tune our blocks to not all be Material.ROCK and break instantly.
+We could also make them do something.  Who knows. (me, probably, since i'm writing this) (i don't know right now tho)
+
+So since none of our items look amazing lets make a new item that we will use specifically for our creative tab display.
+Since making a creative tab is the easiest thing ever, w
 
 
 

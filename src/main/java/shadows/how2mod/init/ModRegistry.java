@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import shadows.how2mod.blocks.BlockTest;
+import shadows.how2mod.blocks.BlockWithStates;
 import shadows.how2mod.items.ItemMetaTest;
 import shadows.how2mod.items.ItemTest;
 
@@ -19,6 +20,7 @@ public class ModRegistry {
 	public static final Item TEST = new ItemTest("test");
 	public static final Block TEST_BLOCK = new BlockTest("test_block");
 	public static final Item META_TEST = new ItemMetaTest("test_meta_item");
+	public static final Block STATE_TEST = new BlockWithStates("test_state_block");
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {

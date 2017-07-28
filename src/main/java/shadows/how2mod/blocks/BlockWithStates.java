@@ -5,9 +5,14 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import shadows.how2mod.init.ModRegistry;
 import shadows.how2mod.items.ItemBlockTest;
@@ -38,9 +43,19 @@ public class BlockWithStates extends BlockTest{
 	}
 	
 	@Override
+    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+        return getDefaultState().withProperty(META, meta);
+    }
+	
+	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
 		for(int i = 0; i < 8; i++) list.add(new ItemStack(this, 1, i));
 	}
+	
+	@Override
+    public int damageDropped(IBlockState state) {
+        return state.getValue(META);
+    }
 	
 	@Override
 	public void registerModels() {

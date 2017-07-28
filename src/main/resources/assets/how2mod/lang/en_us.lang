@@ -1,5 +1,7 @@
 item.how2mod.test.name=Test Item
+
 tile.how2mod.test_block.name=Test Block
+
 item.how2mod.test_meta_item.0.name=Test Meta Item 0
 item.how2mod.test_meta_item.1.name=Test Meta Item 1
 item.how2mod.test_meta_item.2.name=Test Meta Item 2
@@ -16,3 +18,12 @@ item.how2mod.test_meta_item.12.name=Test Meta Item 12
 item.how2mod.test_meta_item.13.name=Test Meta Item 13
 item.how2mod.test_meta_item.14.name=Test Meta Item 14
 item.how2mod.test_meta_item.15.name=Test Meta Item 15
+
+tile.how2mod.test_state_block.0.name=Test State Block 0
+tile.how2mod.test_state_block.1.name=Test State Block 1
+tile.how2mod.test_state_block.2.name=Test State Block 2
+tile.how2mod.test_state_block.3.name=Test State Block 3
+tile.how2mod.test_state_block.4.name=Test State Block 4
+tile.how2mod.test_state_block.5.name=Test State Block 5
+tile.how2mod.test_state_block.6.name=Test State Block 6
+tile.how2mod.test_state_block.7.name=Test State Block 7
