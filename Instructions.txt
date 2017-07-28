@@ -558,9 +558,41 @@ Change our constructors to match these:
 		this(name, false);
 	}
 	
-We're going to add the other constructor to maintain compat with our declared BlockTest.
+We're going to add the other constructor to maintain compat with our declared BlockTest, and we want to switch our BlockWithStates to use super(name, true) instead of super(name).
+So, now, let's go create our ItemBlock class.  Once we make it, our constructor needs to do a few things.  Super with a BlockWithStates, set the registry name to our block's registry name, and setHasSubtypes.
+We won't add a ITEMS.add(this) call because we will be doing that in our block.  The other thing we need to do is override getMetadata, so we can have metadata.
+You should end up with this
 
+	public class ItemBlockTest extends ItemBlock {
 
+		public ItemBlockTest(BlockWithStates block) {
+			super(block);
+			setRegistryName(block.getRegistryName());
+			setHasSubtypes(true);
+		}
+	
+		@Override
+		public int getMetadata(int damage) {
+			return damage;
+		}
+
+	}
+
+now let's go back to our Block and make this itemblock in our constructor.
+
+	ModRegistry.ITEMS.add(new ItemBlockTest(this));
+
+That's basically all we need.  Now, we need to override getSubBlocks in our Block, so we can populate the creative tab with 1 item for each of our states.
+Unlike our item, we only made 8 blockstates, instead of 16 item variants.  We could have 16 variants by extending the PropertyInteger to be from 0 to 15 instead of 0 to 7, but same concept, so no reason to.
+
+	@Override
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		for(int i = 0; i < 8; i++) list.add(new ItemStack(this, 1, i));
+	}
+	
+Just like that.  Note we do not have to check if(isInCreativeTab(this)) since this is a block, and the ItemBlock checks this already and runs getSubBlocks by default.
+
+Now we need our blockstate, and to override registerModels().  Since it'll be easier to do the override, lets do that first.
 
 
 
