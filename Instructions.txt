@@ -655,7 +655,13 @@ So, issue is now, the misc tab is becoming pretty cluttered with our stuff: http
 We could also make them do something.  Who knows. (me, probably, since i'm writing this) (i don't know right now tho)
 
 So since none of our items look amazing lets make a new item that we will use specifically for our creative tab display.
-Since making a creative tab is the easiest thing ever, w
+Since making a creative tab is the easiest thing ever, we will only cover this briefly.  Also, we are here right now: https://github.com/Shadows-of-Fire/How2Mod/commit/2574af792a5bfc31d90d7180cb05bb5435bd501c
+
+Now, we could define an entire other item for our creative tab, or we could just expand on our test meta item, and use the 16th metadata (Items do not have a hard limit of 15 like blocks do).
+So lets do that.  Expand the loop in registerModels() in ItemMetaTest to be i < 17 instead of i < 16, and set a texture for the meta of 16 in the test_meta_item blockstate JSON.
+Note, we will not be expanding getSubItems, as this will be strictly for display on the creative tab.  You can still obtain the item via /give though.
+Sometimes it makes sense to make a new item to display on the creative tab, (BiomesOPlenty does this with their Earth item), but right now we can use subtypes.  This new item should be unobtainable, so it doesn't *really* need a lang entry.
+You can add one if you want.
 
 
 
