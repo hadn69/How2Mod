@@ -30,13 +30,13 @@ public class ItemMetaTest extends ItemTest {
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
 		if (this.isInCreativeTab(tab))
-			for (int i = 0; i < 17; i++)
+			for (int i = 0; i < 16; i++)
 				list.add(new ItemStack(this, 1, i));
 	}
 
 	@Override
 	public void registerModels() {
-		for (int i = 0; i < 16; i++)
+		for (int i = 0; i < 17; i++)
 			ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName(), "meta=" + i));
 	}
 
