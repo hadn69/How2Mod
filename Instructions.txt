@@ -44,7 +44,9 @@ Now here's the part where its important that I use eclipse, because if you're us
 
 Now that your sDecW is finished (you should see a BUILD SUCCESSFUL) in the command window, you need to import the project into your IDE.  I think i'm gonna start using newlines here to split Eclipse and IDEA, in case anyone wants to write in here how that works.
 
-ECLIPSE:  Use the import function and import an Existing Gradle Project.  Then just direct it to the folder containing your build.gradle and hit finish. Then you should end up with this: https://imgur.com/KLCwWmu
+ECLIPSE:  
+	First, use the help menu to open the eclipse marketplace and install the Buildship plugin.
+	Use the import function and import an Existing Gradle Project.  Then just direct it to the folder containing your build.gradle and hit finish. Then you should end up with this: https://imgur.com/KLCwWmu
 
 IDEA: ?
 
@@ -495,7 +497,7 @@ There are two methods that need to be overriden, or no states will persist throu
 	public IBlockState getStateFromMeta(int meta)
 	public int getMetaFromState(IBlockState state)
 	
-	
+And with that in mind, let's go make a new block class.  We will be extending our old block to do this.
 
 
 
