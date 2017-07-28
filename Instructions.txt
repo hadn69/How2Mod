@@ -608,6 +608,11 @@ Now we need our blockstate, and to override registerModels().  Since it'll be ea
 
 This will register our itemblock's for meta 0-7 to the same blockstate variant, so the inventory and the block in-world will be the same.
 Now we just need the blockstate JSON.  We can essentially use our item blockstate as a base, since using only a single property integer makes them nearly equivalent.
+So now we get this: https://github.com/Shadows-of-Fire/How2Mod/blob/7056f658c3ab55ebf935763211148e74ad1966ab/src/main/resources/assets/how2mod/blockstates/test_state_block.json
+Honestly, the only thing that matters is the cube_all, and the fact that the textures are named "all" as their selector.  The file name and texture paths can be different.  Hell, if you're feeling confident, you could even make a custom model using an editor.
+There are also other vanilla models that things can be based off of.
+This blockstate file applies the "cube_all" model to all states, but then applies a different texture based on the state.  Now, I'll go create some placeholder textures, so they actually appear.
+You can either do that as well, or just steal them from the repo.
 
 
 
