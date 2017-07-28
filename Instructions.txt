@@ -686,6 +686,19 @@ You may notice the itemGroup.how2mod, that's a lang key.  This tab currently has
 So now our tab is named, our items are there, and we are at this commit: https://github.com/Shadows-of-Fire/How2Mod/commit/28e41c5d3a75b41a2124b2df1e3d415bda9a05b0
 
 And on that note, its 3 am, so no more anything tonight.  Poor u.  U can learn later.
+Its not 3 am anymore so maybe more things.  Lets make our BlockWithStates be more than a useless thing that sounds like a rock and breaks instantly.
+So, let's change the hardness and resistance of our block so it doesn't break instantly, and so it doesnt get completely blown away by tnt.  It's a rock after all.	
+
+	setHardness(2.0F);
+	setResistance(2.0F);
+
+We can add these lines to our constructor so our block now has a hardness and a resistance.  Important thing to remember though, is that to have a custom resistance, you have to set it *after* the hardness.
+This is because for whatever reason, setHardness runs this code
+
+    if (this.blockResistance < hardness * 5.0F)
+    {
+        this.blockResistance = hardness * 5.0F;
+    }
 
 
 

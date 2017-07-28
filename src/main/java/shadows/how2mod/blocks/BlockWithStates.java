@@ -24,6 +24,8 @@ public class BlockWithStates extends BlockTest{
 	public BlockWithStates(String name) {
 		super(name, true);
 		setDefaultState(this.blockState.getBaseState().withProperty(META, 0));
+		setHardness(2.0F);
+		setResistance(2.0F);
 		ModRegistry.ITEMS.add(new ItemBlockTest(this));
 	}
 	
