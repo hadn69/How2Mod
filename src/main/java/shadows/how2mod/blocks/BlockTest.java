@@ -13,13 +13,17 @@ import shadows.how2mod.init.ModRegistry;
 
 public class BlockTest extends Block implements IHasModel {
 
-	public BlockTest(String name) {
+	public BlockTest(String name, boolean hasCustomItemBlock) {
 		super(Material.ROCK);
 		setRegistryName(name);
 		setUnlocalizedName(How2Mod.MODID + "." + name);
 		setCreativeTab(CreativeTabs.MISC);
 		ModRegistry.BLOCKS.add(this);
-		ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
+		if(!hasCustomItemBlock) ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
+	}
+	
+	public BlockTest(String name) {
+		this(name, false);
 	}
 
 	@Override

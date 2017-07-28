@@ -538,7 +538,27 @@ Now, there are a few other things that need to happen to use states here.  So, l
 	setDefaultState(this.blockState.getBaseState().withProperty(META, 0));
 	
 This tells minecraft what to return in getDefaultState(), which is generally what we is used to get the default IBlockState of any block.  It's also generally used as a fallback should something fail.
+Your new block class should now look like this: https://github.com/Shadows-of-Fire/How2Mod/blob/07f20379cadf37c167c52e980fc902e776c4779b/src/main/java/shadows/how2mod/blocks/BlockWithStates.java
+However, we aren't ready to go in game and see this block yet.  As currently, it won't have a name, or a texture, or anything of the sort.
+We need a few other things: A custom ItemBlock, lang entries, and our blockstate JSON.
 
+So, now let's revisit our BlockTest constructor so that we can not register the default ItemBlock.
+Change our constructors to match these:
+
+	public BlockTest(String name, boolean hasCustomItemBlock) {
+		super(Material.ROCK);
+		setRegistryName(name);
+		setUnlocalizedName(How2Mod.MODID + "." + name);
+		setCreativeTab(CreativeTabs.MISC);
+		ModRegistry.BLOCKS.add(this);
+		if(!hasCustomItemBlock) ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
+	}
+	
+	public BlockTest(String name) {
+		this(name, false);
+	}
+	
+We're going to add the other constructor to maintain compat with our declared BlockTest.
 
 
 
