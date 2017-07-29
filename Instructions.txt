@@ -700,8 +700,36 @@ This is because for whatever reason, setHardness runs this code
         this.blockResistance = hardness * 5.0F;
     }
 
+No clue why it does that, honestly.  But, either way, now your block will no longer instant-break, and you won't accidentally delete it by punching it (since it wouldn't drop without a pickaxe either way).
 
+So now lets go make this block do something. There are a couple methods to override to make Blocks do things.
 
+	public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) | Called when the block is left clicked.
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) | Called when the block is right clicked.
+	public void onBlockDestroyedByExplosion(World worldIn, BlockPos pos, Explosion explosionIn) | Guess, honestly.
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) | This is called by randomTick if the block is setTickRandomly(true).  It will also be called on a scheduled block update, or by some mods.
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) | Lets you do things like spawn particles. This method is SideOnly(Side.CLIENT)
+	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) | Also guess, like, method names are sometimes useful.
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) | Called when nearby blocks change.  This method is @Deprecated, but that's really completely pointless in minecraft.
+	
+Side note about deprecation:  The general concept of @Deprecated in minecraft code (Not forge code, stay away from deprecated forge code or lex will hide in ur house) is that it means you shouldn't call it.  You will still need to override it to do stuff.
+
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) | Called after the block is set in the Chunk data, but before the Tile Entity is set
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) | Called after the block is destroyed, before TileEntities are removed, by default, just tries to remove a tile entity from this pos.
+	public int quantityDropped(IBlockState state, int fortune, Random random) | How many of getItemDropped(state, rand, fortune) we drop when this block is broken.
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) | The item to drop on break by default.
+	public int damageDropped(IBlockState state) | The metadata of a getItemDropped(state, rand, fortune) to drop.
+	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) | When an entity walks (strictly on the top face) of this block.
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) | Called when an entity is inside this block's space.
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) | Called right after someone uses this block's ItemBlock.
+	public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) | When something falls on this block.
+	public void onLanded(World worldIn, Entity entityIn) | Similar to the last one, but not completely. Same concept tho.
+	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) | Called before the block is set to air, even if the player doesnt have the correct tool to harvest.
+	public void fillWithRain(World worldIn, BlockPos pos) | Called randomly during rain.
+	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) | Adds tooltips to this block's ItemBlock
+	public boolean isFireSource(World world, BlockPos pos, EnumFacing side) | Returning true to this makes this block an infinite fire source, like netherrack
+	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) | Overriding this lets you change what things your block drops.
+	By default, it uses getItemDropped, quantityDropped, and damageDropped to create the drops. 
 
 
 
