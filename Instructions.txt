@@ -48,7 +48,7 @@ ECLIPSE:
 	First, use the help menu to open the eclipse marketplace and install the Buildship plugin.
 	Use the import function and import an Existing Gradle Project.  Then just direct it to the folder containing your build.gradle and hit finish. Then you should end up with this: https://imgur.com/KLCwWmu
 
-IDEA: ?
+IDEA: Idea should have an import function for this, and it handles gradle on its own.
 
 So now we basically just have the example mod in here. (com.example.examplemod.ExampleMod)
 Which you can work with easily, but you should probably just completely ignore and make your own thing.
