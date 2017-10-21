@@ -21,9 +21,9 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12-14.21.1.2426" //Forge version
+    version = "1.12.2-14.23.0.2512" //Forge version
     runDir = "run" //Directory for dev game instance
-    mappings = "snapshot_20170625" //Mappings snapshot.  Usually a good idea to update every so often.
+    mappings = "snapshot_20171010" //Mappings snapshot.  Usually a good idea to update every so often.
 }
 
 dependencies {

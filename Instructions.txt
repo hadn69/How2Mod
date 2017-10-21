@@ -732,7 +732,9 @@ Side note about deprecation:  The general concept of @Deprecated in minecraft co
 	By default, it uses getItemDropped, quantityDropped, and damageDropped to create the drops. 
 
 
-
+So I really stalled work on this, but I did make one minor change.  No telling if I'll actually go back and continue it.
+Anyway, this new commit is about side safety and localization.  This changes the use of the SideOnly class I18n and the sending of a TextComponentString into a TextComponentTranslation
+This will make these messages support other languages and not crash if these methods are called on the server. It also sends the messages from the server world (world.isRemote) -> (!world.isRemote).  See the commit "Localization is a thing"
 
 
 
