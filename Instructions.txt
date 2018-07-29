@@ -14,7 +14,7 @@ You have two options here: Either install gradle to your system, or temporarily 
 
 Since the second option is less compilated, let's go with that.
 
-So extract the gradle zip into some folder, then run the command "gradle w" from a command prompt or command line.
+So extract the gradle zip into some folder, and make a nice folder called "gradle" inside the your happy "bin" directory then run the command "gradle w" from a command prompt or command line inside the "bin" directory. If it fails you might need to delete ".gradle" (the file inside bin, not the .bat).
 then run "gradle --stop" to close the daemon so you can delete this folder later.
 Now you have generated 4 files you need to go put the wrapper back in your forge workspace.
 
