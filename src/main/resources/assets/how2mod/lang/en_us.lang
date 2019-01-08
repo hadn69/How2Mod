@@ -29,3 +29,6 @@ tile.how2mod.test_state_block.6.name=Test State Block 6
 tile.how2mod.test_state_block.7.name=Test State Block 7
 
 itemGroup.how2mod=How 2 Mod Test Things
+
+msg.how2mod.use_thing=You have right clicked with a %s
+msg.how2mod.click_block=You have right clicked a %s with a %s

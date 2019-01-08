@@ -14,7 +14,7 @@ You have two options here: Either install gradle to your system, or temporarily 
 
 Since the second option is less compilated, let's go with that.
 
-So extract the gradle zip into some folder, then run the command "gradle w" from a command prompt or command line.
+So extract the gradle zip into some folder, and make a nice folder called "gradle" inside the your happy "bin" directory then run the command "gradle w" from a command prompt or command line inside the "bin" directory. If it fails you might need to delete ".gradle" (the file inside bin, not the .bat).
 then run "gradle --stop" to close the daemon so you can delete this folder later.
 Now you have generated 4 files you need to go put the wrapper back in your forge workspace.
 
@@ -48,7 +48,7 @@ ECLIPSE:
 	First, use the help menu to open the eclipse marketplace and install the Buildship plugin.
 	Use the import function and import an Existing Gradle Project.  Then just direct it to the folder containing your build.gradle and hit finish. Then you should end up with this: https://imgur.com/KLCwWmu
 
-IDEA: ?
+IDEA: Idea should have an import function for this, and it handles gradle on its own.
 
 So now we basically just have the example mod in here. (com.example.examplemod.ExampleMod)
 Which you can work with easily, but you should probably just completely ignore and make your own thing.
@@ -732,7 +732,9 @@ Side note about deprecation:  The general concept of @Deprecated in minecraft co
 	By default, it uses getItemDropped, quantityDropped, and damageDropped to create the drops. 
 
 
-
+So I really stalled work on this, but I did make one minor change.  No telling if I'll actually go back and continue it.
+Anyway, this new commit is about side safety and localization.  This changes the use of the SideOnly class I18n and the sending of a TextComponentString into a TextComponentTranslation
+This will make these messages support other languages and not crash if these methods are called on the server. It also sends the messages from the server world (world.isRemote) -> (!world.isRemote).  See the commit "Localization is a thing"
 
 
 
